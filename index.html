@@ -54,19 +54,19 @@
         <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             <div class="glass p-6 rounded-2xl flex flex-col items-center shadow-lg transform hover:scale-105 transition duration-300">
                 <span id="days" class="text-5xl md:text-7xl font-black text-blue-400 drop-shadow-[0_0_10px_rgba(96,165,250,0.5)]">00</span>
-                <span class="text-sm md:text-base text-gray-400 mt-2 uppercase tracking-widest">Days</span>
+                <span id="daysLabel" class="text-sm md:text-base text-gray-400 mt-2 uppercase tracking-widest">Days</span>
             </div>
             <div class="glass p-6 rounded-2xl flex flex-col items-center shadow-lg transform hover:scale-105 transition duration-300">
                 <span id="hours" class="text-5xl md:text-7xl font-black text-purple-400 drop-shadow-[0_0_10px_rgba(192,132,252,0.5)]">00</span>
-                <span class="text-sm md:text-base text-gray-400 mt-2 uppercase tracking-widest">Hours</span>
+                <span id="hoursLabel" class="text-sm md:text-base text-gray-400 mt-2 uppercase tracking-widest">Hours</span>
             </div>
             <div class="glass p-6 rounded-2xl flex flex-col items-center shadow-lg transform hover:scale-105 transition duration-300">
                 <span id="minutes" class="text-5xl md:text-7xl font-black text-pink-400 drop-shadow-[0_0_10px_rgba(244,114,182,0.5)]">00</span>
-                <span class="text-sm md:text-base text-gray-400 mt-2 uppercase tracking-widest">Minutes</span>
+                <span id="minutesLabel" class="text-sm md:text-base text-gray-400 mt-2 uppercase tracking-widest">Minutes</span>
             </div>
             <div class="glass p-6 rounded-2xl flex flex-col items-center shadow-lg transform hover:scale-105 transition duration-300 border-pink-500/30">
                 <span id="seconds" class="text-5xl md:text-7xl font-black text-red-500 drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]">00</span>
-                <span class="text-sm md:text-base text-gray-400 mt-2 uppercase tracking-widest">Seconds</span>
+                <span id="secondsLabel" class="text-sm md:text-base text-gray-400 mt-2 uppercase tracking-widest">Seconds</span>
             </div>
         </div>
 
@@ -101,6 +101,10 @@
         const hoursEl = document.getElementById('hours');
         const minutesEl = document.getElementById('minutes');
         const secondsEl = document.getElementById('seconds');
+        const daysLabel = document.getElementById('daysLabel');
+        const hoursLabel = document.getElementById('hoursLabel');
+        const minutesLabel = document.getElementById('minutesLabel');
+        const secondsLabel = document.getElementById('secondsLabel');
         const countdownContainer = document.getElementById('countdown');
         const celebrationContainer = document.getElementById('celebration');
         const audio = document.getElementById('explosionSound');
@@ -207,6 +211,11 @@
             hoursEl.innerHTML = h < 10 ? '0' + h : h;
             minutesEl.innerHTML = m < 10 ? '0' + m : m;
             secondsEl.innerHTML = s < 10 ? '0' + s : s;
+
+            daysLabel.innerText = d === 1 ? 'Day' : 'Days';
+            hoursLabel.innerText = h === 1 ? 'Hour' : 'Hours';
+            minutesLabel.innerText = m === 1 ? 'Minute' : 'Minutes';
+            secondsLabel.innerText = s === 1 ? 'Second' : 'Seconds';
         }
 
         const interval = setInterval(updateCountdown, 1000);
